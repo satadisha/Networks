@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function pause() {
+read -p "$*"
+} 
+
+ping_site () {  
+echo "pinging $1"
+ping $1 | head -n1 >> ip_list
+}
+
+
+echo "parent process"
+for site in $(cat sites);
+do
+ping_site $site &
+sleep 100
+killall -9 ping
+killall -9 ping_site
+sleep 10
+done
