@@ -14,7 +14,7 @@ echo "parent process"
 for site in $(cat sites);
 do
 ping_site $site &
-sleep 100
+sleep 5
 killall -9 ping
 killall -9 ping_site
 sleep 10
