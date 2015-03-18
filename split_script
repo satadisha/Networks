@@ -1,0 +1,19 @@
+#!/bin/bash
+
+for site in $(cat sites);
+do
+
+OFile=$site"dump1"
+echo $OFile
+tcpdump -r dump1 -v src $site -w ./splited_files/$OFile
+
+OFile=$site"dump2"
+echo $OFile
+tcpdump -r dump2 -v src $site -w ./splited_files/$OFile
+
+
+OFile=$site"dump3"
+echo $OFile
+tcpdump -r dump3 -v src $site -w ./splited_files/$OFile
+
+done
